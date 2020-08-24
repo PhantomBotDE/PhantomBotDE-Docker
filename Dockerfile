@@ -1,6 +1,6 @@
 # Base docker image
 FROM openjdk:11-jre-slim
-LABEL maintainer "Daevien <github@daevien.com>"
+LABEL maintainer "PhantomBotDE"
 
 # environment variables
 ARG PV=3.3.0
@@ -12,12 +12,12 @@ RUN apt update && apt install -y bash curl wget unzip cron dirmngr
 # phantombot installation
 RUN mkdir -p /root/tmp && \
         cd /root/tmp && \
-        wget https://github.com/PhantomBot/PhantomBot/releases/download/v${PV}/PhantomBot-${PV}.zip && \
-        unzip PhantomBot-${PV}.zip && \
-        rm PhantomBot-${PV}.zip && \
-        mkdir /phantombot && \
-        mv PhantomBot-${PV}/* /phantombot && \
-        chmod u+x /phantombot/launch-service.sh /phantombot/launch.sh /phantombot/java-runtime-linux/bin/java
+        wget https://github.com/PhantomBotDE/PhantomBotDE/releases/download/v${PV}/PhantomBotDE-${PV}.zip && \
+        unzip PhantomBotDE-${PV}.zip && \
+        rm PhantomBotDE-${PV}.zip && \
+        mkdir /phantombotde && \
+        mv PhantomBotDE-${PV}/* /phantombotde && \
+        chmod u+x /phantombotde/launch-service.sh /phantombotde/launch.sh /phantombotde/java-runtime-linux/bin/java
 
 # remove leftovers
 RUN cd && \
