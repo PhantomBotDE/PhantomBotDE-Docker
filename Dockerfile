@@ -15,13 +15,15 @@ RUN mkdir -p /root/tmp && \
         wget https://github.com/PhantomBotDE/PhantomBotDE/releases/download/v${PV}/PhantomBotDE-${PV}.zip && \
         unzip PhantomBotDE-${PV}.zip && \
         rm PhantomBotDE-${PV}.zip && \
-        mkdir /phantombotde && \
-        mv PhantomBotDE-${PV}/* /phantombotde && \
-        chmod u+x /phantombotde/launch-service.sh /phantombotde/launch.sh /phantombotde/java-runtime-linux/bin/java
+        mkdir /phantombot && \
+        mv PhantomBotDE-${PV}/* /phantombot && \
+        chmod u+x /phantombot/launch-service.sh /phantombot/launch.sh /phantombot/java-runtime-linux/bin/java
 
 # remove leftovers
 RUN cd && \
         rm -rf /root/tmp
+
+WORKDIR /phantombot
 
 #RUN echo "cd phantombot && ./launch-service.sh" > /start-phantombot
 COPY wrapper.sh /wrapper.sh
@@ -30,5 +32,3 @@ RUN chmod a+x /wrapper.sh
 
 # Run
 CMD /wrapper.sh
-
-
